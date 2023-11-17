@@ -1,20 +1,23 @@
 import { DefaultTheme } from 'styled-components';
 
-export const theme: DefaultTheme = {
-  color: {
-    blue: '#00bac7',
-  },
-  boxShadow: {
-    normal: '0 3px 8px 0 rgb(0 0 0 / 10%)',
-    purple: '0 3px 8px 0 #d6c9ff',
-    blue: '0 3px 8px 0 #b3e2e6',
-  },
+const fontWeight = {
+  light: 300,
+  bold: 600,
+};
+const colors = {
+  white: '#FFFFFF',
+  lightGray: '#AEB5BC',
+  gray: '#676D74',
+  boldGray: '#353A3F',
 };
 
-const customMediaQuery = (maxWidth: number): string =>
-  `@media (max-width: ${maxWidth}px)`;
+const boxShadow = {
+  normal: '0 3px 8px 0 rgb(0 0 0 / 10%)',
+  purple: '0 3px 8px 0 #d6c9ff',
+  blue: '0 3px 8px 0 #b3e2e6',
+};
 
-export const MIXINS = {
+const MIXINS = {
   // flex
   flexBox: (direction = 'row', align = 'center', justify = 'center') => `
     display: flex;
@@ -36,9 +39,9 @@ export const MIXINS = {
   },
 };
 
-export const media = {
-  custom: customMediaQuery,
-  pc: customMediaQuery(1440),
-  tablet: customMediaQuery(768),
-  mobile: customMediaQuery(576),
+export const theme: DefaultTheme = {
+  fontWeight,
+  colors,
+  boxShadow,
+  MIXINS,
 };
