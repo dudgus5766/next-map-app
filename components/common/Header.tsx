@@ -1,20 +1,26 @@
 import React from 'react';
 import Link from 'next/link';
 import styled from 'styled-components';
-const HeaderComponent = () => {
+
+interface Props {
+  rightElements?: React.ReactElement[];
+}
+
+const HeaderComponent = ({ rightElements }: Props) => {
   return (
-    <Container>
-      <LogoContainer>
+    <Header>
+      <Container>
         <Link href="/">
           <LogoText>맛지도</LogoText>
         </Link>
-      </LogoContainer>
-    </Container>
+      </Container>
+      {rightElements && <Container>{rightElements}</Container>}
+    </Header>
   );
 };
 export default HeaderComponent;
 
-const Container = styled.div`
+const Header = styled.div`
   position: absolute;
   top: 0;
   left: 0;
@@ -30,11 +36,13 @@ const Container = styled.div`
   pointer-events: none;
 `;
 
-const LogoContainer = styled.div`
-  width: 100%;
+const Container = styled.div`
+  display: flex;
+  pointer-events: auto;
 `;
 
 const LogoText = styled.h1`
   font-size: 30px;
   font-weight: ${({ theme }) => theme.fontWeight.bold};
+  color: ${({ theme }) => theme.colors.blue};
 `;

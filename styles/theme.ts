@@ -4,11 +4,13 @@ const fontWeight = {
   light: 300,
   bold: 600,
 };
+
 const colors = {
   white: '#FFFFFF',
   lightGray: '#AEB5BC',
   gray: '#676D74',
   boldGray: '#353A3F',
+  blue: '#40a6fd',
 };
 
 const boxShadow = {
