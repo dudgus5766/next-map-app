@@ -24,6 +24,7 @@
     "typescript": "5.2.2"
   },
   "devDependencies": {
+    "@types/navermaps": "^3.7.3",
     "@types/styled-components": "^5.1.30",
     "eslint-config-prettier": "^9.0.0",
     "prettier": "3.0.3"

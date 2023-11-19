@@ -2,6 +2,7 @@ import Header from '../components/common/Header';
 import Link from 'next/link';
 import styled from 'styled-components';
 import { FaCopy, FaExternalLinkAlt } from 'react-icons/fa';
+import MapSection from '../components/home/MapSection';
 
 export default function Home() {
   const onClick = () => {
@@ -10,6 +11,7 @@ export default function Home() {
 
   return (
     <>
+      {/*헤더 부분*/}
       <Header
         rightElements={[
           <BoxButton onClick={onClick} style={{ marginRight: 8 }} key="button">
@@ -22,7 +24,11 @@ export default function Home() {
           </Link>,
         ]}
       />
-      <main></main>
+
+      {/*지도 부분*/}
+      <MainContainer>
+        <MapSection />
+      </MainContainer>
     </>
   );
 }
@@ -45,4 +51,9 @@ const BoxButton = styled.button`
   }
 
   transition: background-color 200ms ease;
+`;
+
+const MainContainer = styled.div`
+  width: 100%;
+  height: 100%;
 `;
