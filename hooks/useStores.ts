@@ -1,6 +1,6 @@
 import { useCallback } from 'react';
-import { Store } from '@/types/store';
 import { mutate } from 'swr';
+import { Store } from '@/types/store';
 
 export const STORE_KEY = '/stores';
 

@@ -1,8 +1,8 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useRef } from 'react';
 import Script from 'next/script';
 import styled from 'styled-components';
-import { NaverMap } from '@/types/map';
 import { INITIAL_CENTER, INITIAL_ZOOM } from '@/hooks/useMap';
+import { NaverMap } from '@/types/map';
 import { Coordinates } from '@/types/store';
 
 type MapProps = {
@@ -11,12 +11,12 @@ type MapProps = {
   initialZoom?: number;
   onLoad?: (map: NaverMap) => void;
 };
-const Map = ({
+export default function Map({
   mapId = 'map',
   initialCenter = INITIAL_CENTER,
   initialZoom = INITIAL_ZOOM,
   onLoad,
-}: MapProps) => {
+}: MapProps) {
   const mapRef = useRef<NaverMap | null>(null);
   const initializeMap = () => {
     const location = new naver.maps.LatLng(...initialCenter);
@@ -54,11 +54,12 @@ const Map = ({
         src={`https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=${process.env.NEXT_PUBLIC_NCP_CLIENT_ID}`}
         onReady={initializeMap}
       />
-      <MapBox id={'map'} style={{ width: '100%', height: '100%' }} />
+      <MapBox id={'map'} />
     </>
   );
-};
+}
 
-export default Map;
-
-const MapBox = styled.div``;
+const MapBox = styled.div`
+  width: 100%;
+  height: 100%;
+`;
