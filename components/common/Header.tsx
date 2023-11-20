@@ -2,11 +2,11 @@ import React from 'react';
 import Link from 'next/link';
 import styled from 'styled-components';
 
-interface Props {
+type HeaderProps = {
   rightElements?: React.ReactElement[];
-}
+};
 
-const HeaderComponent = ({ rightElements }: Props) => {
+const HeaderComponent = ({ rightElements }: HeaderProps) => {
   return (
     <Header>
       <Container>
@@ -14,6 +14,7 @@ const HeaderComponent = ({ rightElements }: Props) => {
           <LogoText>맛지도</LogoText>
         </Link>
       </Container>
+
       {rightElements && <Container>{rightElements}</Container>}
     </Header>
   );
