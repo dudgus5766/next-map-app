@@ -1,12 +1,7 @@
 import React, { useEffect } from 'react';
-import { NaverMap } from '@/types/map';
-import { Store } from '@/types/store';
+import { Marker } from '@/types/map';
 
-type MarkerProps = {
-  map: NaverMap;
-  store: Store;
-};
-export default function Marker({ map, store }: MarkerProps) {
+export default function Marker({ map, coordinates, icon }: Marker) {
   useEffect(() => {
     let marker: naver.maps.Marker | null = null;
     // map이 있다면 naver map에 새로운 인스턴스 생성
@@ -14,7 +9,8 @@ export default function Marker({ map, store }: MarkerProps) {
       /** https://navermaps.github.io/maps.js.ncp/docs/tutorial-2-Marker.html */
       marker = new naver.maps.Marker({
         map: map,
-        position: new naver.maps.LatLng(...store.coordinates),
+        position: new naver.maps.LatLng(...coordinates),
+        icon,
       });
     }
 
