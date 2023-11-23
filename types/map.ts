@@ -1,4 +1,4 @@
-import { Coordinates } from '@/types/store';
+import { Coordinates, Store } from '@/types/store';
 
 export type NaverMap = naver.maps.Map;
 
@@ -8,4 +8,5 @@ export type Marker = {
   map: NaverMap;
   coordinates: Coordinates;
   icon: ImageIcon;
+  onClick: () => void;
 };

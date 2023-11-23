@@ -17,7 +17,7 @@ const SCALED_MARKER_HEIGHT = MARKER_HEIGHT * SCALE;
 export default function Markers() {
   const { data: map } = useSWR<NaverMap>(MAP_KEY);
   const { data: stores } = useSWR<Store[]>(STORE_KEY);
-
+  console.log('stores>>>', stores);
   const generateStoreMarkerIcon = (markerIndex: number): ImageIcon => {
     return {
       /** TODO: store.foodKind을 사용한 아이콘 이미지 제작 후 사용 예정**/
@@ -31,6 +31,12 @@ export default function Markers() {
     };
   };
 
+  const onClickMarker = (store: Store) => {
+    const position = new naver.maps.LatLng(...store.coordinates);
+    // 선택한 마커로 부드럽게 이동합니다.
+    map?.panTo(position, { duration: 450 });
+  };
+
   if (!map || !stores) return null;
 
   return (
@@ -41,6 +47,7 @@ export default function Markers() {
             map={map}
             coordinates={store.coordinates}
             icon={generateStoreMarkerIcon(store.season)}
+            onClick={() => onClickMarker(store)}
             key={store.nid}
           />
         );

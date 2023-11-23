@@ -6,6 +6,7 @@ import Header from '@/components/common/Header';
 import MapSection from '@/components/home/MapSection';
 import useStores from '@/hooks/useStores';
 import { Store } from '@/types/store';
+import DetailSection from '@/components/home/DetailSection';
 
 type HomeProps = {
   stores: Store[];
@@ -41,6 +42,7 @@ export default function Home({ stores }: HomeProps) {
       {/*지도 부분*/}
       <MainContainer>
         <MapSection />
+        <DetailSection />
       </MainContainer>
     </>
   );
@@ -78,6 +80,7 @@ const BoxButton = styled.button`
 `;
 
 const MainContainer = styled.div`
+  position: relative;
   width: 100%;
   height: 100%;
 `;

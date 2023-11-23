@@ -4,6 +4,10 @@ import styled from 'styled-components';
 import { INITIAL_CENTER, INITIAL_ZOOM } from '@/hooks/useMap';
 import { NaverMap } from '@/types/map';
 import { Coordinates } from '@/types/store';
+import {
+  Header_Height,
+  Section_Padding_Top,
+} from '@/components/home/DetailSection';
 
 type MapProps = {
   mapId?: string;
@@ -62,4 +66,8 @@ export default function Map({
 const MapBox = styled.div`
   width: 100%;
   height: 100%;
+
+  & > div:nth-of-type(n + 2):nth-of-type(-n + 3) {
+    bottom: ${Header_Height + Section_Padding_Top}px !important;
+  }
 `;

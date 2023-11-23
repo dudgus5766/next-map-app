@@ -6,7 +6,7 @@ type HeaderProps = {
   rightElements?: React.ReactElement[];
 };
 
-const HeaderComponent = ({ rightElements }: HeaderProps) => {
+export default function HeaderComponent({ rightElements }: HeaderProps) {
   return (
     <Header>
       <Container>
@@ -18,13 +18,11 @@ const HeaderComponent = ({ rightElements }: HeaderProps) => {
       {rightElements && <Container>{rightElements}</Container>}
     </Header>
   );
-};
-export default HeaderComponent;
+}
 
 const Header = styled.div`
-  position: absolute;
-  top: 0;
-  left: 0;
+  //position
+  ${({ theme }) => theme.MIXINS.positionFullScreen}
 
   //flex
   ${({ theme }) => theme.MIXINS.flexBox('row', 'center', 'space-between')}
