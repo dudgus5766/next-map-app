@@ -1,12 +1,11 @@
 import React, { useState } from 'react';
 import useSWR from 'swr';
 import styled from 'styled-components';
-import { IoIosArrowUp } from 'react-icons/io';
+import DetailHeader from './DetailHeader';
+import DetailContent from './DetailContent';
 import { Store } from '@/types/store';
 import { CURRENT_STORE_KEY } from '@/hooks/useCurrentStore';
-
-export const Header_Height = 60;
-export const Section_Padding_Top = 8;
+import { Header_Height, Section_Padding_Top } from '@/constants/constant';
 
 export default function DetailSection() {
   const { data: currentStore } = useSWR<Store>(CURRENT_STORE_KEY);
@@ -18,20 +17,12 @@ export default function DetailSection() {
         currentStore ? 'selected' : ''
       } `}
     >
-      <HeaderWrapper>
-        <ArrowButton
-          expanded={expanded}
-          onClick={() => setExpanded(!expanded)}
-          disabled={!currentStore}
-        >
-          <IoIosArrowUp size={20} color="#666666" />
-        </ArrowButton>
-        {currentStore ? (
-          <Title>{currentStore.name}</Title>
-        ) : (
-          <Title>매장을 선택해주세요</Title>
-        )}
-      </HeaderWrapper>
+      <DetailHeader
+        currentStore={currentStore}
+        expanded={expanded}
+        onClickArrow={() => setExpanded(!expanded)}
+      />
+      <DetailContent currentStore={currentStore} expanded={expanded} />
     </Container>
   );
 }
@@ -63,33 +54,4 @@ const Container = styled.div`
   &.expanded {
     transform: translateY(0);
   }
-`;
-
-const HeaderWrapper = styled.div`
-  height: ${Header_Height}px;
-
-  display: flex;
-  flex-direction: column;
-`;
-
-const ArrowButton = styled.button<{ expanded: boolean }>`
-  height: 20px;
-  align-self: center;
-
-  border: none;
-  background-color: transparent;
-
-  &:disabled {
-    opacity: 0.2;
-    cursor: not-allowed;
-  }
-
-  transform: ${(props) => (props.expanded ? `rotate(180deg)` : 0)};
-`;
-
-const Title = styled.p`
-  margin: 4px 20px;
-  font-size: 15px;
-  font-weight: ${({ theme }) => theme.fontWeight.medium};
-  color: ${({ theme }) => theme.colors.boldGray};
 `;
