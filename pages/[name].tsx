@@ -2,14 +2,14 @@ import { GetStaticPaths, GetStaticProps, NextPage } from 'next';
 import styled from 'styled-components';
 import DetailHeader from '@/components/home/DetailHeader';
 import DetailContent from '@/components/home/DetailContent';
-import { Header_Height, Section_Padding_Top } from '@/constants/constant';
+import { Section_Padding_Top } from '@/constants/constant';
 import type { Store } from '@/types/store';
 
-interface Props {
+type StoreDetailProps = {
   store: Store;
-}
+};
 
-const StoreDetail: NextPage<Props> = ({ store }) => {
+const StoreDetail: NextPage<StoreDetailProps> = ({ store }) => {
   const expanded = true;
 
   return (
@@ -56,8 +56,5 @@ const Container = styled.div`
   box-shadow: 0 -2px 8px 0 rgba(136, 136, 136, 0.3);
 
   transition: transform 500ms;
-
-  transform: translateY(
-    calc(100% - ${Header_Height}px - ${Section_Padding_Top}px)
-  );
+  transform: translateY(0);
 `;

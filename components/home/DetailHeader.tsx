@@ -57,7 +57,7 @@ const ArrowButton = styled.button<{ expanded: boolean }>`
 
 const Title = styled.p`
   margin: 4px 20px;
-  font-size: 15px;
-  font-weight: ${({ theme }) => theme.fontWeight.medium};
-  color: ${({ theme }) => theme.colors.boldGray};
+  font-size: 20px;
+  font-weight: ${({ theme }) => theme.fontWeight.bold};
+  color: ${({ theme }) => theme.colors.blue};
 `;
