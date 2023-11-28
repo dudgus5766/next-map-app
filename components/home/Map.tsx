@@ -4,10 +4,7 @@ import styled from 'styled-components';
 import { INITIAL_CENTER, INITIAL_ZOOM } from '@/hooks/useMap';
 import { NaverMap } from '@/types/map';
 import { Coordinates } from '@/types/store';
-import {
-  Header_Height,
-  Section_Padding_Top,
-} from '@/components/home/DetailSection';
+import { Header_Height, Section_Padding_Top } from '@/constants/constant';
 
 type MapProps = {
   mapId?: string;

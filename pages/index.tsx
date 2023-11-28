@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import Link from 'next/link';
 import styled from 'styled-components';
-import { FaCopy, FaExternalLinkAlt } from 'react-icons/fa';
+import { FaExternalLinkAlt } from 'react-icons/fa';
 import Header from '@/components/common/Header';
 import MapSection from '@/components/home/MapSection';
 import useStores from '@/hooks/useStores';
@@ -15,10 +15,6 @@ type HomeProps = {
 export default function Home({ stores }: HomeProps) {
   const { initializeStores } = useStores();
 
-  const onClick = () => {
-    alert('복사가 되었습니다.');
-  };
-
   useEffect(() => {
     initializeStores(stores);
   }, [initializeStores, stores]);
@@ -28,9 +24,6 @@ export default function Home({ stores }: HomeProps) {
       {/*헤더 부분*/}
       <Header
         rightElements={[
-          <BoxButton onClick={onClick} style={{ marginRight: 8 }} key="button">
-            <FaCopy size={20} />
-          </BoxButton>,
           <Link href="/feedback" passHref key="link">
             <BoxButton>
               <FaExternalLinkAlt size={20} />

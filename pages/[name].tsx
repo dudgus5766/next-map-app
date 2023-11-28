@@ -1,7 +1,9 @@
 import { GetStaticPaths, GetStaticProps, NextPage } from 'next';
+import { useRouter } from 'next/router';
 import styled from 'styled-components';
 import DetailHeader from '@/components/home/DetailHeader';
 import DetailContent from '@/components/home/DetailContent';
+import useCurrentStore from '@/hooks/useCurrentStore';
 import { Section_Padding_Top } from '@/constants/constant';
 import type { Store } from '@/types/store';
 
@@ -11,13 +13,21 @@ type StoreDetailProps = {
 
 const StoreDetail: NextPage<StoreDetailProps> = ({ store }) => {
   const expanded = true;
+  const router = useRouter();
+  const { setCurrentStore } = useCurrentStore();
 
+  const goToMap = () => {
+    setCurrentStore(store);
+    router.push(`
+      /?zoom=15&lat=${store.coordinates[0]}&lng=${store.coordinates[1]}
+    `);
+  };
   return (
     <Container className={`${expanded ? 'expanded' : ''} `}>
       <DetailHeader
         currentStore={store}
         expanded={expanded}
-        onClickArrow={() => null}
+        onClickArrow={goToMap}
       />
       <DetailContent currentStore={store} expanded={expanded} />
     </Container>
