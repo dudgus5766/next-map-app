@@ -1,12 +1,13 @@
 import React, { useEffect } from 'react';
 import Link from 'next/link';
+import { NextSeo, NextSeoProps } from 'next-seo';
 import styled from 'styled-components';
 import { FaExternalLinkAlt } from 'react-icons/fa';
 import Header from '@/components/common/Header';
 import MapSection from '@/components/home/MapSection';
+import DetailSection from '@/components/home/DetailSection';
 import useStores from '@/hooks/useStores';
 import { Store } from '@/types/store';
-import DetailSection from '@/components/home/DetailSection';
 
 type HomeProps = {
   stores: Store[];
@@ -21,6 +22,10 @@ export default function Home({ stores }: HomeProps) {
 
   return (
     <>
+      <NextSeo
+        title="매장 지도"
+        description="맛있는 식당을 알려주는 지도 서비스입니다."
+      />
       {/*헤더 부분*/}
       <Header
         rightElements={[

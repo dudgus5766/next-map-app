@@ -65,7 +65,7 @@ export default function Markers() {
           map={map}
           coordinates={currentStore.coordinates}
           icon={generateStoreMarkerIcon(currentStore.season, true)}
-          onClick={() => clearCurrentStore()}
+          onClick={clearCurrentStore}
           key={currentStore.nid}
         />
       )}
