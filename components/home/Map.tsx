@@ -55,7 +55,7 @@ export default function Map({
         src={`https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=${process.env.NEXT_PUBLIC_NCP_CLIENT_ID}`}
         onReady={initializeMap}
       />
-      <MapBox id={'map'} />
+      <MapBox id={mapId} />
     </>
   );
 }

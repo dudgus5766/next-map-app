@@ -29,11 +29,14 @@ export default function Home({ stores }: HomeProps) {
       {/*헤더 부분*/}
       <Header
         rightElements={[
-          <Link href="/feedback" passHref key="link">
-            <BoxButton>
-              <FaExternalLinkAlt size={20} />
-            </BoxButton>
-          </Link>,
+          <LinkButton
+            href="/feedback"
+            passHref
+            key="link"
+            aria-label="피드백 페이지로 이동"
+          >
+            <FaExternalLinkAlt size={20} />
+          </LinkButton>,
         ]}
       />
 
@@ -47,9 +50,12 @@ export default function Home({ stores }: HomeProps) {
 }
 
 export async function getStaticProps() {
-  /** TODO: next api routes로 불러오기 (추후 업데이트 예정)**/
-
   const stores = (await import('../public/mockStoreData.json')).default;
+
+  // vercel 환경변수 설정을 위한 주석 - 추후 다시 주석 제거 예정
+  // const stores = await fetch(
+  //   `${process.env.NEXT_PUBLIC_API_URL}/api/stores`
+  // ).then((res) => res.json());
 
   return {
     props: { stores },
@@ -57,7 +63,7 @@ export async function getStaticProps() {
   };
 }
 
-const BoxButton = styled.button`
+const LinkButton = styled(Link)`
   padding: 6px;
   border: none;
   border-radius: 4px;
@@ -69,7 +75,7 @@ const BoxButton = styled.button`
 
   background-color: ${({ theme }) => theme.colors.white};
 
-  &:hover {
+  &:active {
     background-color: ${({ theme }) => theme.colors.blue};
     color: white;
   }

@@ -7,11 +7,12 @@ const fontWeight = {
 } as const;
 
 const colors = {
+  black: '#2D2D2E',
   white: '#FFFFFF',
-  lightGray: '#ccd4db',
+  lightGray: '#CCD4DB',
   gray: '#676D74',
   boldGray: '#353A3F',
-  blue: '#40a6fd',
+  blue: '#40A6FD',
 } as const;
 
 const boxShadow = {
