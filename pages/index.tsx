@@ -50,12 +50,11 @@ export default function Home({ stores }: HomeProps) {
 }
 
 export async function getStaticProps() {
-  const stores = (await import('../public/mockStoreData.json')).default;
+  // const stores = (await import('../public/mockStoreData.json')).default;
 
-  // vercel 환경변수 설정을 위한 주석 - 추후 다시 주석 제거 예정
-  // const stores = await fetch(
-  //   `${process.env.NEXT_PUBLIC_API_URL}/api/stores`
-  // ).then((res) => res.json());
+  const stores = await fetch(
+    `${process.env.NEXT_PUBLIC_API_URL}/api/stores`
+  ).then((res) => res.json());
 
   return {
     props: { stores },
