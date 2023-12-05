@@ -13,4 +13,10 @@ export default {
       href: '/favicon.ico',
     },
   ],
+  additionalMetaTags: [
+    {
+      name: 'google-site-verification',
+      content: 'WpMniN6w7ApMZsO2l3mRt_HFiqai03Rt1C2ES5ojW4k',
+    },
+  ],
 };
