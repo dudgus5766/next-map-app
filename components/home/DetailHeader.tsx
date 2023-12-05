@@ -76,7 +76,7 @@ const UpperWrapper = styled.div`
   ${({ theme }) => theme.MIXINS.flexBox('row', 'center', 'space-between')}
 `;
 
-const Title = styled.p`
+const Title = styled.h1`
   font-size: 20px;
   font-weight: ${({ theme }) => theme.fontWeight.bold};
   color: ${({ theme }) => theme.colors.black};
